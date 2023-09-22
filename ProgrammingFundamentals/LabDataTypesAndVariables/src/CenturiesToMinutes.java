@@ -5,7 +5,7 @@ public class CenturiesToMinutes {
     public static void main(String[] args) {
         Scanner scan = new Scanner(System.in);
         int input = Integer.parseInt(scan.nextLine());
-      long years=input*100;
+        double years=input*100;
       double days=years*365.2422;
       double hours=days*24;
       double minutes=hours*60;

@@ -23,7 +23,7 @@ public class RefactoSpecialNumbers {
             String upperBoolean = String.valueOf(String.valueOf(isSpecialNumber).charAt(0)).toUpperCase()+String.valueOf(isSpecialNumber).substring(1);
             System.out.printf("%d -> %s%n", currentNumber,
                     upperBoolean);
-            sum = 0;
+
         }
 
     }
