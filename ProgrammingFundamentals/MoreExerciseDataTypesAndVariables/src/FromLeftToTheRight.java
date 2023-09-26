@@ -12,12 +12,14 @@ public class FromLeftToTheRight {
             long right = Long.parseLong(string2);
             long sum = 0;
             if (left > right) {
+                left=Math.abs(left);
                 while (left > 0) {
                     sum += left % 10;
                     left /= 10;
 
                 }
             } else {
+                right=Math.abs(right);
                 while (right > 0) {
                     sum += right % 10;
                     right /= 10;
