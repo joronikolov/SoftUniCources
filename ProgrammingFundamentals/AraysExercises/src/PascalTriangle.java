@@ -2,47 +2,28 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
 
-public class EncryptSortAndPrintArray {
+public class PascalTriangle {
     public static void main(String[] args) {
         Scanner scan = new Scanner(System.in);
         int n = Integer.parseInt(scan.nextLine());
-        int[] sortedArray = new int[n];
-        int[] unsortedArray = new int[n];
+        int[] lastArray = new int[n];
+        lastArray[0]=1;
+        for(int i = 0 ; i<n; i++){
+            int[] internal = new int[i + 1];
+            internal[0]=1;
+            for(int j = 0; j <internal.length ; j++) {
 
-        List<String> vowels = Arrays.asList("a", "e", "i", "o", "u");
-        for (int i=0; i<n; i++){
-        String[] word = scan.nextLine().split("");
-        int sum=0;
 
-        for(String e : word){
-            if(vowels.contains(e)){
-                sum+=(e.charAt(0))* word.length;
-            }else {
-                sum+=(e.charAt(0))/ word.length;
+                internal[j] = (j == 0 ? 1 : lastArray[j-1] + lastArray[j]);
+                internal[0]=1;
             }
-        }
-        unsortedArray[i]=sum;
+            System.arraycopy(internal, 0, lastArray, 0, internal.length);
 
-        }
-        int[] buffer = new int[unsortedArray.length];
-        int[] tmp = Arrays.copyOf(unsortedArray,unsortedArray.length);
-        for(int i=0; i< tmp.length; i++){
-            int min=Integer.MAX_VALUE;
-            int lastUpdatedIndex=-1;
-            for(int j=0; j< tmp.length; j++){
-                if(tmp[j]<min ){
-                    min=tmp[j];
-                    lastUpdatedIndex=j;
-                }
+            for (int e : internal){
+                System.out.printf("%d ", e);
             }
-            buffer[i]=min;
-            tmp[lastUpdatedIndex]=Integer.MAX_VALUE;
-            min=Integer.MAX_VALUE;
+            System.out.println();
 
-        }
-        sortedArray=buffer;
-        for(int e : sortedArray){
-            System.out.println(e);
         }
     }
 }

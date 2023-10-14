@@ -1,29 +1,34 @@
-import java.util.Arrays;
-import java.util.List;
+
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Scanner;
 
-public class PascalTriangle {
+public class RecursiveFibonacci {
     public static void main(String[] args) {
         Scanner scan = new Scanner(System.in);
         int n = Integer.parseInt(scan.nextLine());
-        int[] lastArray = new int[n];
-        lastArray[0]=1;
-        for(int i = 0 ; i<n; i++){
-            int[] internal = new int[i + 1];
-            internal[0]=1;
-            for(int j = 0; j <internal.length ; j++) {
+        System.out.println(GetFibonacci(n));
 
 
-                internal[j] = (j == 0 ? 1 : lastArray[j-1] + lastArray[j]);
-                internal[0]=1;
+    }
+    private static long GetFibonacci(int number){
+        Map<String, Long> fibonachiBase = new HashMap<>();
+        fibonachiBase.put("1",1L);
+        fibonachiBase.put("2",1L);
+
+        long result=0;
+        while(result==0) {
+            for (int i = 1; i <= number; i++) {
+                if (fibonachiBase.containsKey(String.valueOf(i)) && fibonachiBase.containsKey(String.valueOf(i+1))
+                        && !fibonachiBase.containsKey(String.valueOf(i+2))) {
+                    fibonachiBase.put(String.valueOf(i+2), fibonachiBase.get(String.valueOf(i))+fibonachiBase.get(String.valueOf(i+1)));
+                }
+                if(fibonachiBase.containsKey(String.valueOf(number))){
+                    result=fibonachiBase.get(String.valueOf(number));
+                }
+
             }
-            System.arraycopy(internal, 0, lastArray, 0, internal.length);
-
-            for (int e : internal){
-                System.out.printf("%d ", e);
-            }
-            System.out.println();
-
         }
+        return  result;
     }
 }
