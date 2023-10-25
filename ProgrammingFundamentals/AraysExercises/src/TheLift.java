@@ -34,10 +34,10 @@ public class TheLift {
 //               cabinCapacity=curState[i];
 //           }
        }
-       boolean emty=true;
+       boolean emty=false;
        for (int e : curState){
-           if(e>0){
-               emty=false;
+           if(e<4){
+               emty=true;
            }
        }
        if(numberOfPeople>0){
@@ -45,7 +45,7 @@ public class TheLift {
            for (int e : curState){
                System.out.printf("%d ", e);
            }
-       } else if (numberOfPeople==0 && emty) {
+       } else if (numberOfPeople==0 && !emty) {
            for (int e : curState){
                System.out.printf("%d ", e);
            }
