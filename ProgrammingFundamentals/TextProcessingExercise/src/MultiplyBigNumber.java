@@ -15,7 +15,7 @@ public class MultiplyBigNumber {
         boolean hasValue=false;
         StringBuilder bigN = new StringBuilder();
         for (String s : bigNumber) {
-            if (!s.equals("0")) {
+            if (!s.equals("0") && s.length()>0 && !s.equals("")) {
                 hasValue = true;
             }
             if (hasValue) {
@@ -26,7 +26,7 @@ public class MultiplyBigNumber {
             bigN.append(0);
         }
         String[] newBigN = bigN.toString().split("");
-        if(multiplier.isEmpty()){
+        if(multiplier.length()==0){
             multiplier="0";
         }
         for(int i = newBigN.length-1; i>=0; i--){
